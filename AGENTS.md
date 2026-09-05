@@ -215,7 +215,7 @@ No concluir que el puerto de teclado está mal solo porque el carácter visible 
 
 ## Memoria y paginado
 
-En máquinas paginadas, una dirección de CPU no identifica por sí sola la memoria física. Antes y después de una operación relevante consultar:
+`read-memory` trabaja sobre la zona de memoria activa. En máquinas paginadas, una dirección de CPU no identifica por sí sola la memoria física, por lo que antes de interpretar una lectura debe comprobarse la zona seleccionada:
 
 ```text
 get-memory-pages
@@ -223,21 +223,61 @@ get-current-memory-zone
 get-memory-zones
 ```
 
+Para todas las máquinas existe el comando `get-memory-zones`, que muestra las zonas disponibles en la máquina actualmente emulada. Por ejemplo, en TBBlue ofrece, entre otras, estas zonas:
+
+```text
+Zone: -1 Name: Mapped memory
+Zone: 0 Name: Machine RAM Size: 2097152
+Zone: 1 Name: Machine ROM Size: 8192
+Zone: 2 Name: Diviface eprom Size: 8192
+Zone: 3 Name: Diviface ram Size: 131072
+Zone: 14 Name: TBBlue patterns Size: 16384
+Zone: 17 Name: TBBlue copper Size: 2048
+Zone: 31 Name: TBBlue sprites Size: 640
+```
+
+La zona `-1` representa los 64 KiB actualmente visibles por la CPU. La zona `0` permite acceder linealmente a los 2 MiB completos de RAM física del Next sin cambiar su MMU.
+
 Lectura visible por la CPU:
 
 ```text
+set-memory-zone -1
 read-memory E140H 80H
 hexdump E140H 80H
 ```
 
-Para acceder a otra zona:
+Lectura de RAM física situada fuera del espacio de direcciones Z80:
 
 ```text
-set-memory-zone numero
-save-binary /tmp/volcado.bin 0 longitud
+set-memory-zone 0
+get-current-memory-zone
+read-memory 100000H 40H
+read-memory 1FFFF0H 10H
 ```
 
-Recordar que el programa puede cambiar la MMU entre dos comandos. Registrar el mapa junto con los datos para que un volcado sea interpretable.
+También pueden inspeccionarse de forma lineal la ROM, la RAM de Diviface y las memorias de patrones, copper y sprites seleccionando su zona. Por ejemplo:
+
+```text
+set-memory-zone 3
+read-memory 10000H 20H
+```
+
+`read-memory` sin dirección vuelca la zona completa. Debe evitarse salvo que sea realmente necesario: en la zona 0 de TBBlue genera la representación hexadecimal de los 2 MiB completos. Para automatizaciones, indicar siempre dirección y longitud.
+
+`save-binary` también opera sobre la zona activa y es preferible para volcados grandes:
+
+```text
+set-memory-zone 0
+save-binary /tmp/ram-next.bin 0 2097152
+```
+
+Después de inspeccionar memoria física, restaurar la zona mapeada si las siguientes direcciones deben interpretarse desde la perspectiva de la CPU:
+
+```text
+set-memory-zone -1
+```
+
+Recordar que el programa puede cambiar la MMU entre dos comandos sobre la zona `-1`. Registrar `get-memory-pages` junto con los datos para que un volcado de memoria mapeada sea interpretable. En las zonas físicas, las direcciones son desplazamientos lineales dentro de la zona y no dependen del mapa visible de la CPU.
 
 En TBBlue, los registros MMU son NextReg `0x50` a `0x57`. NextReg `0x8E` controla el paginado compatible con Spectrum 128K y su bit 3 decide si una escritura cambia o conserva MMU6/MMU7. Las correcciones en esta lógica deben limitarse a TBBlue.
 
