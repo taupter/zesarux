@@ -4618,6 +4618,8 @@ Bit	Function
 void tbblue_paging_128k_reg_142(void)
 {
     z80_byte value=tbblue_registers[142];
+    z80_byte pagina_mmu6_anterior=tbblue_registers[86];
+    z80_byte pagina_mmu7_anterior=tbblue_registers[87];
 
     /*
     0x8E (142) => Spectrum 128K Memory Mapping
@@ -4693,7 +4695,20 @@ Writes immediately change the current mmu mapping as if by port write
     tbblue_out_port_32765(valor_final_puerto_32765);
     tbblue_out_port_8189(valor_final_puerto_8189);
 
-    //TODO puerto 0xdffd
+    if (value & 8) {
+        //El bit 7 equivale al bit 0 de DFFD y completa el banco RAM de cuatro bits
+        z80_byte banco_ram=((value>>4)&7) | ((value&128) ? 8 : 0);
+        tbblue_registers[86]=banco_ram*2;
+        tbblue_registers[87]=banco_ram*2+1;
+    }
+    else {
+        //Una escritura con el bit 3 a cero solo cambia la ROM y debe conservar MMU6/MMU7
+        tbblue_registers[86]=pagina_mmu6_anterior;
+        tbblue_registers[87]=pagina_mmu7_anterior;
+    }
+
+    //Las llamadas a los puertos anteriores recalculan el mapa antes de restaurar MMU6/MMU7
+    tbblue_set_memory_pages();
 
 
         //R bit 3 = 1
