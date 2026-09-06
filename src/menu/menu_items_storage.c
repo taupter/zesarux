@@ -2636,10 +2636,7 @@ void menu_convert_audio_to_zx81(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_convert_audio_to_zx81;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -5121,10 +5118,7 @@ void menu_hilow_convert_audio(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_hilow_convert_audio;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -5734,10 +5728,7 @@ void menu_hilow_visual_datadrive(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_hilow_visual_datadrive;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -7986,10 +7977,7 @@ void menu_visual_microdrive(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_visual_microdrive;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -9098,10 +9086,7 @@ void menu_microdrive_raw_map(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_microdrive_raw_map;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -10258,10 +10243,7 @@ void menu_visual_floppy(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_visual_floppy;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {

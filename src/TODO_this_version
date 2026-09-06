@@ -239,7 +239,7 @@ pero facilitaria poder lanzar ZEsarUX desde consola. funciona --aofile xxx con -
 NextZXOS: 2.06H
 ./zesarux --noconfigfile --mmc-file tbblue-ok.mmc --enable-mmc --machine tbblue --enable-divmmc-ports --mmc-no-persistent-writes
 
--tbblue no funciona:
+-tbblue no funciona (ya si! :) :
 
 NextZXOS: 2.09
 ./zesarux --noconfigfile --mmc-file tbblue-no-ok.mmc --enable-mmc --machine tbblue --enable-divmmc-ports --mmc-no-persistent-writes

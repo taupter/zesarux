@@ -2167,10 +2167,6 @@ void menu_zeng_online_status_window(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_zeng_online_status_window;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
