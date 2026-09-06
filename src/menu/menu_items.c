@@ -1071,10 +1071,7 @@ void menu_debug_cpu_resumen_stats(MENU_ITEM_PARAMETERS)
 
     ventana=&menu_debug_cpu_resumen_stats_ventana;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -1914,10 +1911,7 @@ void menu_about_core_statistics(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_core_statistics;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -2524,10 +2518,7 @@ void menu_ay_registers(MENU_ITEM_PARAMETERS)
         zxvision_window *ventana;
         ventana=&zxvision_ay_registers_overlay;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
 
     int total_chips=audio_get_total_chips();
@@ -2992,10 +2983,7 @@ void menu_debug_tsconf_tbblue_msx_videoregisters(MENU_ITEM_PARAMETERS)
 
     ventana=&menu_debug_tsconf_tbblue_msx_videoregisters_ventana;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -3584,10 +3572,7 @@ void menu_debug_tsconf_tbblue_msx_spritenav(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_tsconf_tbblue_spritenav;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     menu_debug_spritenav_new_window(ventana);
 
@@ -4329,10 +4314,7 @@ void menu_debug_tsconf_tbblue_msx_tilenav(MENU_ITEM_PARAMETERS)
     zxvision_window *ventana;
     ventana=&zxvision_window_tsconf_tbblue_tilenav;
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     menu_debug_tsconf_tbblue_msx_tilenav_new_window(ventana);
 
@@ -5093,10 +5075,7 @@ void menu_audio_new_waveform(MENU_ITEM_PARAMETERS)
         ventana=&zxvision_window_audio_waveform;
 
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
@@ -5916,10 +5895,7 @@ void menu_debug_new_visualmem(MENU_ITEM_PARAMETERS)
     ventana=&zxvision_window_visualmem;
 
 
-    //IMPORTANTE! no crear ventana si ya existe. Esto hay que hacerlo en todas las ventanas que permiten background.
-    //si no se hiciera, se crearia la misma ventana, y en la lista de ventanas activas , al redibujarse,
-    //la primera ventana repetida apuntaria a la segunda, que es el mismo puntero, y redibujaria la misma, y se quedaria en bucle colgado
-    //zxvision_delete_window_if_exists(ventana);
+
 
     //Crear ventana si no existe
     if (!zxvision_if_window_already_exists(ventana)) {
