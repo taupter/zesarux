@@ -114,6 +114,22 @@ help
 help nombre-del-comando
 ```
 
+### Formato numérico en ZRCP
+
+ZRCP interpreta los números como decimales de forma predeterminada. Para escribir un valor hexadecimal es obligatorio añadir el sufijo `H`, también cuando el número contiene letras hexadecimales.
+
+Ejemplos:
+
+```text
+tbblue-get-register 140    # Registro 140 decimal
+tbblue-get-register 8CH    # El mismo registro, expresado en hexadecimal
+read-memory 65535 1        # Dirección 65535 decimal
+read-memory FFFFH 1        # La misma dirección, expresada en hexadecimal
+set-breakpoint 1 PC=0038H
+```
+
+No escribir valores como `8C`, `FF00` o `0038` esperando que se interpreten automáticamente como hexadecimales. La omisión de `H` puede consultar o modificar un registro, dirección o valor distinto del pretendido y producir diagnósticos incorrectos. En sesiones de depuración conviene usar siempre `H` explícitamente para todos los valores que se estén tratando como hexadecimales, incluidos índices de NextReg, direcciones, longitudes y valores escritos.
+
 Consultar la ayuda en vez de adivinar parámetros. En automatizaciones con `nc`, enviar preferentemente un comando cada vez y esperar a que vuelva el prompt. Usar finales de línea CRLF (`\r\n`) si un cliente programático produce respuestas inconsistentes. Varias órdenes enviadas juntas pueden mezclar prompts y resultados.
 
 Al terminar:
